@@ -4,6 +4,7 @@ import 'package:expense_tracker_flutter/plus_button.dart';
 import 'package:expense_tracker_flutter/top_card.dart';
 import 'package:expense_tracker_flutter/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'loading_circle.dart';
 
 class HomePage extends StatefulWidget {
@@ -139,6 +140,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.grey[300],
+        statusBarIconBrightness: Brightness.dark
+      )
+    );
     if (GoogleSheetsApi.loading == true && timeHasStarted == false) {
       startLoading();
     }
@@ -153,7 +160,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _body() {
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.all(20),
       child: Column(
         children: [
           TopCard(
